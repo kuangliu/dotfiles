@@ -87,9 +87,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal("request::default_layouts", function()
    awful.layout.append_default_layouts({
+       awful.layout.suit.tile.left,
        awful.layout.suit.floating,
        awful.layout.suit.tile,
-       awful.layout.suit.tile.left,
        awful.layout.suit.tile.bottom,
        awful.layout.suit.tile.top,
        awful.layout.suit.fair,
@@ -285,9 +285,13 @@ awful.keyboard.append_global_keybindings({
            end
        end,
        {description = "go back", group = "client"}),
-   awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+   -- awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+   --           {description = "focus the next screen", group = "screen"}),
+   -- awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+   --           {description = "focus the previous screen", group = "screen"}),
+   awful.key({ modkey, }, "l", function () awful.screen.focus_relative( 1) end,
              {description = "focus the next screen", group = "screen"}),
-   awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+   awful.key({ modkey, }, "h", function () awful.screen.focus_relative(-1) end,
              {description = "focus the previous screen", group = "screen"}),
    awful.key({ modkey, "Control" }, "n",
              function ()
@@ -308,10 +312,10 @@ awful.keyboard.append_global_keybindings({
              {description = "swap with previous client by index", group = "client"}),
    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
              {description = "jump to urgent client", group = "client"}),
-   awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-             {description = "increase master width factor", group = "layout"}),
-   awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-             {description = "decrease master width factor", group = "layout"}),
+   -- awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+   --           {description = "increase master width factor", group = "layout"}),
+   -- awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+   --           {description = "decrease master width factor", group = "layout"}),
    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
              {description = "increase the number of master clients", group = "layout"}),
    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
